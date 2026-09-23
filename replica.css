@@ -15,3 +15,72 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .replica-notice{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:100000;background:white;color:#282626;border:1px solid #5846bb;box-shadow:0 5px 30px #0003;padding:20px 24px;max-width:600px;width:calc(100% - 40px);font:16px/1.5 Arial,sans-serif}
 .replica-notice a{color:#5846bb;text-decoration:underline}.replica-notice button{display:block;margin-top:14px;padding:8px 18px;background:#5846bb;color:#fff;border:0;cursor:pointer;font:inherit}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Responsive navigation used on phones and small tablets. */
+.mobile-header{display:none}
+
+@media (max-width:767px){
+  :root{--mobile-gutter:20px}
+  html,body{width:100%;min-width:0!important;max-width:100%;margin:0;overflow-x:hidden}
+  body{font-size:16px;-webkit-text-size-adjust:100%}
+  #SITE_CONTAINER,#site-root,#masterPage,#PAGES_CONTAINER,#SITE_PAGES,#SITE_PAGES_TRANSITION_GROUP,
+  .wixui-page,.JJb9Mt,[class^="Container"]{width:100%!important;min-width:0!important;max-width:100%!important}
+  #SITE_HEADER{display:none!important}
+
+  .mobile-header{position:sticky;top:0;z-index:99999;display:flex;align-items:center;justify-content:space-between;width:100%;min-height:72px;padding:9px 16px;box-sizing:border-box;background:#fff;box-shadow:0 4px 18px #1f1c2120}
+  .mobile-header__logo{display:block;width:82px;height:auto}
+  .mobile-header__toggle{display:grid;place-items:center;width:46px;height:46px;padding:0;border:0;border-radius:50%;background:#5846bb;color:#fff;font:700 25px/1 Arial,sans-serif;cursor:pointer}
+  .mobile-header__toggle span{display:block;transform:translateY(-1px)}
+  .mobile-header__nav{position:absolute;top:calc(100% + 1px);left:12px;right:12px;display:none;flex-direction:column;gap:4px;padding:12px;border-radius:0 0 16px 16px;background:#fff;box-shadow:0 14px 30px #1f1c2130}
+  .mobile-header.is-open .mobile-header__nav{display:flex}
+  .mobile-header__nav a{display:block;padding:12px 14px;border-radius:10px;color:#2f2e2e;text-decoration:none;font:600 16px/1.25 poppins-v2,Arial,sans-serif}
+  .mobile-header__nav a:hover,.mobile-header__nav a:focus-visible{background:#f0edff;color:#443583}
+  body[data-page="index"] #comp-mcpc48b6,
+  body[data-page="libros"] #comp-mcqwaltu,
+  body[data-page="contacto"] #comp-mcr6dl15{display:none!important}
+
+  main,footer{width:100%!important;min-width:0!important;max-width:100%!important}
+  main section.wixui-section,footer.wixui-footer{left:0!important;width:100%!important;min-width:0!important;max-width:100%!important;height:auto!important;min-height:0!important;margin:0!important}
+  main section.wixui-section>[data-mesh-id$="inlineContent"],
+  footer>[class]>[class]>[data-mesh-id$="inlineContent"]{width:100%!important;height:auto!important;min-height:0!important}
+  main [data-mesh-id$="inlineContent-gridContainer"],
+  footer [data-mesh-id$="inlineContent-gridContainer"]{position:relative!important;display:flex!important;flex-direction:column!important;align-items:center!important;gap:18px!important;width:100%!important;height:auto!important;min-height:0!important;padding:34px var(--mobile-gutter)!important;box-sizing:border-box!important}
+  main [data-mesh-id$="inlineContent-gridContainer"]>*:not([data-mesh-id$="wedge-3"]):not([data-mesh-id$="wedge-6"]),
+  footer [data-mesh-id$="inlineContent-gridContainer"]>*{position:relative!important;inset:auto!important;grid-area:auto!important;align-self:center!important;justify-self:center!important;float:none!important;max-width:100%!important;margin:0 auto!important;transform:none!important;box-sizing:border-box!important}
+  main [data-mesh-id$="wedge-3"],main [data-mesh-id$="wedge-6"]{display:none!important}
+
+  .wixui-rich-text{width:100%!important;height:auto!important;min-height:0!important;text-align:center!important}
+  .wixui-rich-text h1{font-size:clamp(34px,10vw,48px)!important;line-height:1.1!important}
+  .wixui-rich-text h2{font-size:clamp(27px,8vw,38px)!important;line-height:1.18!important}
+  .wixui-rich-text h3{font-size:clamp(22px,6.5vw,31px)!important;line-height:1.3!important}
+  .wixui-rich-text h4,.wixui-rich-text h5{font-size:21px!important;line-height:1.35!important}
+  .wixui-rich-text h6,.wixui-rich-text p{font-size:16px!important;line-height:1.55!important}
+  .wixui-rich-text br{display:none}
+
+  .wixui-image{max-width:100%!important;height:auto!important}
+  .wixui-image img,.wixui-image wow-image{display:block!important;max-width:100%!important;height:auto!important;object-fit:contain!important}
+  .CeUMmm,.Ak0vpt,.wixui-column-strip,.wixui-column-strip__column{display:block!important;width:100%!important;min-width:0!important;max-width:100%!important;height:auto!important;min-height:0!important}
+  .wixui-column-strip__column>[data-mesh-id$="inlineContent"]{height:auto!important}
+  .wixui-horizontal-line{width:min(100%,320px)!important;height:1px!important}
+  .wixui-vertical-line{display:none!important}
+
+  form.wixui-form{width:100%!important;max-width:520px!important;height:auto!important;padding:0!important}
+  form.wixui-form [data-mesh-id$="inlineContent-gridContainer"]{align-items:stretch!important;padding:0!important}
+  .wixui-text-input,.wixui-text-box{width:100%!important;height:auto!important}
+  .wixui-text-input input,.wixui-text-box textarea{width:100%!important;min-height:48px!important;box-sizing:border-box!important;font-size:16px!important}
+  .wixui-text-box textarea{min-height:130px!important}
+  .wixui-button{max-width:100%!important}
+
+  .collection-covers{flex-direction:column;gap:30px;height:auto;padding:10px 0 24px}
+  .collection-covers figure{flex:none;width:min(100%,260px)}
+  .collection-covers figcaption{font-size:20px;margin-bottom:12px}
+  .collection-covers img{max-height:none}
+  #comp-mcqwzbvx{width:100%!important;height:auto!important}
+  #comp-mcqxkjns{order:20;margin-top:4px!important;padding:18px 14px!important;border-radius:16px;background:#fff;box-shadow:0 10px 28px #1f1c2118}
+
+  .replica-notice{bottom:10px;width:calc(100% - 24px);padding:16px;font-size:14px}
+}
+
+@media (min-width:768px) and (max-width:1050px){
+  html,body{min-width:980px}
+}

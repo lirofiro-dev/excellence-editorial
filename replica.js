@@ -1,6 +1,31 @@
 /* Standalone navigation and explicit email handoff; no Wix runtime. */
 function updateScrollbarWidth(){document.body.style.setProperty('--scrollbar-width',`${Math.max(0,window.innerWidth-document.documentElement.clientWidth)}px`);}
 updateScrollbarWidth();window.addEventListener('resize',updateScrollbarWidth);
+
+function createMobileHeader(){
+  const page=document.body.dataset.page||'index';
+  const header=document.createElement('header');
+  header.className='mobile-header';
+  header.innerHTML=`<a href="index.html" aria-label="Ir al inicio"><img class="mobile-header__logo" src="assets/bd6fd1_a212ac800b834d38961d80bcb0938b9a~mv2.png" alt="Excellence Editorial"></a><button class="mobile-header__toggle" type="button" aria-expanded="false" aria-controls="mobile-navigation" aria-label="Abrir menú"><span aria-hidden="true">☰</span></button><nav class="mobile-header__nav" id="mobile-navigation" aria-label="Navegación móvil"><a href="index.html#comp-mckbp4q6">Colegios</a><a href="libros.html">Libros</a><a href="index.html#comp-mcphjuzc">Talleres</a><a href="index.html#comp-mcpnldwh">Capacitaciones</a><a href="contacto.html">Contacto</a></nav>`;
+  document.body.prepend(header);
+  const toggle=header.querySelector('.mobile-header__toggle');
+  const icon=toggle.querySelector('span');
+  const close=()=>{header.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Abrir menú');icon.textContent='☰';};
+  toggle.addEventListener('click',()=>{
+    const open=!header.classList.contains('is-open');
+    header.classList.toggle('is-open',open);
+    toggle.setAttribute('aria-expanded',String(open));
+    toggle.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú');
+    icon.textContent=open?'×':'☰';
+  });
+  header.querySelectorAll('a').forEach(link=>link.addEventListener('click',close));
+  document.addEventListener('click',event=>{if(!header.contains(event.target))close();});
+  document.addEventListener('keydown',event=>{if(event.key==='Escape')close();});
+  window.addEventListener('resize',()=>{if(window.innerWidth>=768)close();});
+  const current=header.querySelector(page==='libros'?'a[href="libros.html"]':page==='contacto'?'a[href="contacto.html"]':'a[href="index.html#comp-mckbp4q6"]');
+  current?.setAttribute('aria-current','page');
+}
+createMobileHeader();
 // Reuse the original per-component keyframes, delays, easing and directions.
 // Keep static content visible when JavaScript, CSS inspection or observation
 // is unavailable. Observe the untransformed layout box, not a clipped frame.
